@@ -1,5 +1,5 @@
 export default {
-    port: process.env.PORT || 80,
+    port: process.env.PORT,
     host: process.env.HOST || 'localhost',
     corsOrigin: process.env.CORS_ORIGIN || 'https://soundbot-practice-frontend.vercel.app/',
 }
