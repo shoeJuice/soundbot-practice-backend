@@ -22,12 +22,11 @@ const io = new Server(server, {
 });
 
 app.get("/", (_, res) => {
-    res.send(`Server is running. \nVersion: ${version}`);
-}
-)
+  res.send(`Server is running. \nVersion: ${version}`);
+});
 
 // @ts-ignore
 server.listen(PORT, HOST, () => {
-    logger.info(`Server is running..`);
-    socket({ io });
-})
+  logger.info(`Server is running..`);
+  socket({ io });
+});
