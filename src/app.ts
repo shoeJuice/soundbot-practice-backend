@@ -6,7 +6,7 @@ import { version } from "../package.json";
 import logger from "./utils/logger";
 import socket from "./sockets";
 
-const port = config.get<string>("port");
+const port = config.get<number>("port");
 const host = config.get<string>("host");
 const corsOrigin = config.get<string>("corsOrigin");
 
