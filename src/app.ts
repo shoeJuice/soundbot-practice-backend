@@ -26,6 +26,7 @@ app.get("/", (_, res) => {
 }
 )
 
+// @ts-ignore
 server.listen(PORT, HOST, () => {
     logger.info(`Server is running..`);
     socket({ io });
