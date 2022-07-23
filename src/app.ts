@@ -6,8 +6,8 @@ import { version } from "../package.json";
 import logger from "./utils/logger";
 import socket from "./sockets";
 
-const port = config.get<string>("port");
-const host = config.get<string>("host");
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 const corsOrigin = config.get<string>("corsOrigin");
 
 const app = express();
@@ -26,7 +26,7 @@ app.get("/", (_, res) => {
 }
 )
 
-server.listen(port, host, () => {
+server.listen(PORT, HOST, () => {
     logger.info(`Server is running..`);
     socket({ io });
 })
