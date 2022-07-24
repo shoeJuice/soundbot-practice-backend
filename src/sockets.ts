@@ -1,6 +1,7 @@
 import { Server, Socket } from "socket.io";
 import logger from "./utils/logger";
 import * as EVENTS from '../config/socketEvents'
+import { v4 as uuidv4 } from "uuid";
 
 /**
  * The main socket used by the server to send and receive messages to
@@ -16,7 +17,8 @@ function socket({ io }: { io: Server }) {
 
         socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION, () => {
             logger.info("Client trying to connect..");
-            io.emit(EVENTS.SERVER_EVENTS.COMPLETE_INITALIZATION, socket.id);   
+            const clientID = uuidv4();
+            io.emit(EVENTS.SERVER_EVENTS.COMPLETE_INITALIZATION, clientID);   
         });
 
         socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION_COMPLETE, (userID: string) => {
