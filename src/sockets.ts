@@ -17,6 +17,7 @@ function socket({ io }: { io: Server }) {
         socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION, () => {
             logger.info("Client trying to connect..");
             const userID = uuidv4();
+            logger.debug("Assigning ID to client: " + userID);
             io.emit(EVENTS.SERVER_EVENTS.COMPLETE_INITALIZATION, userID);   
         });
 
