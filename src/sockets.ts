@@ -21,8 +21,8 @@ function socket({ io }: { io: Server }) {
             io.to(socketID).emit(EVENTS.SERVER_EVENTS.COMPLETE_INITALIZATION, userID);   
         });
 
-        socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION_COMPLETE, (userID: string) => {
-            logger.info(`Client ${userID} has connected.`);
+        socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION_COMPLETE, (clientID) => {
+            logger.info(`Client ${clientID} has connected.`);
         })
 
         socket.on(EVENTS.CLIENT_EVENTS.PLAY_SOUND, () => {
