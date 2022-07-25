@@ -14,11 +14,11 @@ function socket({ io }: { io: Server }) {
         //console.log(userID)
         logger.info(`Client establishing connection..`);
 
-        socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION, () => {
+        socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION, (socketID) => {
             logger.info("Client trying to connect..");
             const userID = uuidv4();
-            logger.debug("Assigning ID to client: " + userID);
-            io.emit(EVENTS.SERVER_EVENTS.COMPLETE_INITALIZATION, userID);   
+            logger.info("Assigning ID to client: " + userID);
+            io.to(socketID).emit(EVENTS.SERVER_EVENTS.COMPLETE_INITALIZATION, userID);   
         });
 
         socket.on(EVENTS.CLIENT_EVENTS.INITIALIZATION_COMPLETE, (userID: string) => {
